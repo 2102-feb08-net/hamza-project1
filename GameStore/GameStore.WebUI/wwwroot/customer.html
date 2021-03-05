@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="main.html">Main Menu</a></li>
+                <li><a href="customer.html">Customer</a></li>
+                <li><a href="locations.html">Store locations</a></li>
+                <li><a href="order.html">Place orders</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h3>What would you like to do?</h3>
+
+        <form id="customer-action-form">
+            <label>
+                Search Customer
+                <input type="submit" id="search-button" value="Search">
+            </label>
+            <label>
+                Create a new customer
+                <input type="submit" id="create-button" value="Create new">
+            </label>
+        </form>
+
+        <table id="customer-table" hidden>
+            <thead>
+                <tr>
+                    <th scope="col">From</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Received</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+    </main>
+</body>
+
+</html>

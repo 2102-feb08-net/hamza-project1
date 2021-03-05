@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GameStore.DataAccess.Entities;
+using GameStore.Library.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameStore.DataAccess.Repositories
 {
-    class GameStoreRepository
+    public class GameStoreRepository : IGameStoreRepository
     {
         private readonly GameStoreContext _dbContext;
 

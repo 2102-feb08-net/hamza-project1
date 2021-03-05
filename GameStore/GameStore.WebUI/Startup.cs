@@ -1,7 +1,11 @@
+using GameStore.DataAccess.Entities;
+using GameStore.DataAccess.Repositories;
+using GameStore.Library.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,6 +31,14 @@ namespace GameStore.WebUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = File.ReadAllText("E:/Programming/revature/gamestore-connection-string.txt");
+
+            services.AddDbContext<GameStoreContext>(options =>
+            {
+                options.UseSqlServer(connectionString);
+            });
+
+            services.AddScoped<IGameStoreRepository, GameStoreRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

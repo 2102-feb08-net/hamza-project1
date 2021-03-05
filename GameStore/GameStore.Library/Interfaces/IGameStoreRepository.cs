@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameStore.Library.Interfaces
 {
-    interface IGameStoreRepository
+    public interface IGameStoreRepository
     {
         IEnumerable<Library.Model.Customer> SearchCustomerName(string name);
 

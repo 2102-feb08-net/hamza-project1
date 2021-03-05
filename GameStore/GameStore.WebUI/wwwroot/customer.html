@@ -19,32 +19,69 @@
     </header>
 
     <main>
+
         <h3>What would you like to do?</h3>
 
-        <form id="customer-action-form">
-            <label>
-                Search Customer
-                <input type="submit" id="search-button" value="Search">
-            </label>
-            <label>
-                Create a new customer
-                <input type="submit" id="create-button" value="Create new">
-            </label>
-        </form>
+        <label>
+            Search Customer
+            <input type="button" id="search-button" value="Search">
+        </label>
+        <label>
+            Create a new customer
+            <input type="button" id="create-button" value="Create new">
+        </label>
 
-        <table id="customer-table" hidden>
-            <thead>
-                <tr>
-                    <th scope="col">From</th>
-                    <th scope="col">Subject</th>
-                    <th scope="col">Received</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+
+        <section id="search-customer" hidden>
+
+            <h4>Search customer with first and last name:</h4>
+            <form id="search-customer-form">
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname"><br><br>
+                <input type="submit" value="Search">
+            </form>
+            <br>
+
+            <table id="customer-table" hidden>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">City</th>
+                        <th scope="col">State</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+
+        <section id="new-customer" hidden>
+            <h4>Enter Customer's information:</h4>
+            <form id="new-customer-form">
+                <label for="firstname">First name:</label><br>
+                <input type="text" id="firstname" name="firstname"><br>
+                <label for="lastname">Last name:</label><br>
+                <input type="text" id="lastname" name="lastname"><br>
+                <label for="username">User name:</label><br>
+                <input type="text" id="username" name="username"><br>
+                <label for="city">City:</label><br>
+                <input type="text" id="city" name="city"><br>
+                <label for="state">State:</label><br>
+                <input type="text" id="state" name="state"><br><br>
+                <input type="submit" value="Create">
+            </form>
+        </section>
+        
 
     </main>
+
+    <script src="searchcustomer.js"></script>
 </body>
 
 </html>

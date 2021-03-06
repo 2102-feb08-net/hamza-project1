@@ -7,9 +7,14 @@ const searchCustomerForm = document.getElementById('search-customer-form');
 const custTable = document.getElementById('customer-table');
 const searchResult = document.getElementById('search-result');
 const newCust = document.getElementById('new-customer');
+const newCustomerForm = document.getElementById('new-customer-form');
+const errorMessage = document.getElementById('error-message');
+const successMessage = document.getElementById('success-message');
 
 search.onclick = function () {
     newCust.hidden = true;
+    successMessage.hidden = true;
+    errorMessage.hidden = true;
     searchCustomerSection.hidden = false;
 }
 
@@ -18,6 +23,7 @@ create.onclick = function () {
     custTable.hidden = true;
     newCust.hidden = false;
 }
+
 
 searchCustomerForm.addEventListener('submit', event => {
     event.preventDefault();
@@ -59,3 +65,35 @@ searchCustomerForm.addEventListener('submit', event => {
 
     custTable.hidden = false;
 });
+
+console.log('before create customer');
+
+newCustomerForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    console.log('in create customer');
+
+    let _firstName = newCustomerForm.elements['firstname'].value;
+    let _lastName = newCustomerForm.elements['lastname'].value;
+    let _userName = newCustomerForm.elements['username'].value;
+    let _city = newCustomerForm.elements['city'].value;
+    let _state = newCustomerForm.elements['state'].value;
+
+    const customer = {
+        firstName: _firstName,
+        lastName: _lastName,
+        userName: _userName,
+        city: _city,
+        state: _state
+    }
+
+    createNewCustomer(customer)
+        .then(() => {
+            successMessage.textContent = 'Message sent successfully';
+            successMessage.hidden = false;
+        })
+        .catch(error => {
+            errorMessage.textContent = error.toString();
+            errorMessage.hidden = false;
+        });
+})

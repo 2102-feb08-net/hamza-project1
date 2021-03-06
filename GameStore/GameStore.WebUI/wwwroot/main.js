@@ -35,3 +35,18 @@ function getLocationOrder(locationId) {
         return response.json();
     });
 }
+
+// send a request that contains customer data in the body to create a new customer
+function createNewCustomer(customer) {
+    return fetch('/api/create-customer', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(customer)
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error(`Network response was not ok (${response.status})`);
+        }
+    });
+}

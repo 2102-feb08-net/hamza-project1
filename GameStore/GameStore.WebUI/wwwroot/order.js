@@ -21,6 +21,7 @@ if (locationId === null) {
     getCustomerOrder(customerId)
         .then(list => {
             if (list.length === 0) {
+                document.getElementById('cust-name').innerHTML = custName;
                 document.getElementById('no-result').hidden = false;
             } else {
                 for (const order of list) {

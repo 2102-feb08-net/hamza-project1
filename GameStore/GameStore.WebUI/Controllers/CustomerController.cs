@@ -47,5 +47,11 @@ namespace GameStore.WebUI.Controllers
             return _gameStoreRepository.GetLocationOrderHistory(location);
         }
 
+        [HttpPost("api/create-customer")]
+        public void CreateNewCustomer(Customer customer)
+        {
+            _gameStoreRepository.CreateCustomer(customer);
+            _gameStoreRepository.Save();
+        }
     }
 }

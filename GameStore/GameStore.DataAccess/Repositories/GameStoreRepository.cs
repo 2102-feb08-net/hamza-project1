@@ -81,7 +81,7 @@ namespace GameStore.DataAccess.Repositories
                     Name = p.Name,
                     Price = p.Price
                 }).ToList(),
-                ProductQuanties = or.OrderLines.Select(orl => orl.Quantity).ToList()
+                ProductQuantities = or.OrderLines.Select(orl => orl.Quantity).ToList()
             });
         }
 
@@ -110,7 +110,7 @@ namespace GameStore.DataAccess.Repositories
                     Name = p.Name,
                     Price = p.Price
                 }).ToList(),
-                ProductQuanties = or.OrderLines.Select(orl => orl.Quantity).ToList()
+                ProductQuantities = or.OrderLines.Select(orl => orl.Quantity).ToList()
             });
         }
 

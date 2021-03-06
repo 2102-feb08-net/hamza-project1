@@ -14,7 +14,7 @@ namespace GameStore.Library.Model
         public DateTime TimePlaced { get; set; }
         public double TotalPrice { get; set; }
         public List<Product> Products { get; set; }
-        public List<int> ProductQuanties { get; set; }
+        public List<int> ProductQuantities { get; set; }
 
         public Dictionary<Product, int> ShoppingCart { get; set; } = new();
 
@@ -29,7 +29,7 @@ namespace GameStore.Library.Model
         {
             for (int i = 0; i < Products.Count; i++)
             {
-                ShoppingCart.Add(Products[i], ProductQuanties[i]);
+                ShoppingCart.Add(Products[i], ProductQuantities[i]);
             }
         }
 

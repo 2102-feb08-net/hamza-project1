@@ -44,7 +44,9 @@ searchCustomerForm.addEventListener('submit', event => {
                                  <td>${customer.city}</td>
                                  <td>${customer.state}</td>`;
                 row.addEventListener('click', () => {
+                    sessionStorage.removeItem('locationId');
                     sessionStorage.setItem('customerId', customer.id);
+                    sessionStorage.setItem('customerName', fullName);
                     location = 'order.html';
                 });
                 counter++;

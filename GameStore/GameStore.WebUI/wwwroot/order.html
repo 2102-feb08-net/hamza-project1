@@ -4,6 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Place order</title>
+    <style>
+        /* The Modal (background) */
+        .product-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,10 +59,83 @@
     </header>
 
     <main>
-        <p>
-            this is the order page.
-        </p>
+
+        <section id="customer-order" hidden>
+
+            <h3>This is the order history of customer: <span id="customer-name"></span></h3>
+
+            <section id="customer-order-history">
+                <h4>Click on an order to see what products were bought</h4>
+                <table id="customer-order-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Location ID</th>
+                            <!--<th scope="col">Location Name</th>-->
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Time Placed</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customer-order-result">
+                    </tbody>
+                </table>
+            </section>
+
+        </section>
+
+        <section id="location-order" hidden>
+
+            <h3>This is the order history of location at: <span id="location-name"></span></h3>
+
+            <section id="location-order-history">
+                <h4>Click on an order to see what products were bought</h4>
+                <table id="location-order-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Customer ID</th>
+                            <!--<th scope="col">Customer Name</th>-->
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Time Placed</th>
+                        </tr>
+                    </thead>
+                    <tbody id="location-order-result">
+                    </tbody>
+                </table>
+            </section>
+
+        </section>
+
+        <div id="modal" class="product-modal">
+
+            
+            <div id="modalcontent" class="modal-content">
+                <span class="close">&times;</span>
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-result">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div id="no-result" hidden><h4>No order history found</h4></div>
+
     </main>
+
+    <script src="main.js"></script>
+    <script src="order.js"></script>
 </body>
 
 </html>

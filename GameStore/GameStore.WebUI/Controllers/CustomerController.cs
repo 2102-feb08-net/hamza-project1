@@ -25,6 +25,27 @@ namespace GameStore.WebUI.Controllers
             return _gameStoreRepository.SearchCustomerName(name);
         }
 
+        [HttpGet("api/get-customer-order-history/{id}")]
+        public IEnumerable<Order> GetCustomerOrder(int id)
+        {
+            Customer customer = new();
+            customer.Id = id;
+            return _gameStoreRepository.GetCustomerOrderHistory(customer);
+        }
+
+        [HttpGet("api/get-locations")]
+        public IEnumerable<Location> GetLocations()
+        {
+            return _gameStoreRepository.GetAllLocations();
+        }
+
+        [HttpGet("api/get-location-order-history/{id}")]
+        public IEnumerable<Order> GetLocationOrder(int id)
+        {
+            Location location = new();
+            location.Id = id;
+            return _gameStoreRepository.GetLocationOrderHistory(location);
+        }
 
     }
 }

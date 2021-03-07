@@ -53,5 +53,18 @@ namespace GameStore.WebUI.Controllers
             _gameStoreRepository.CreateCustomer(customer);
             _gameStoreRepository.Save();
         }
+
+        [HttpPost("api/place-order")]
+        public void PlaceOrder(Order order)
+        {
+            _gameStoreRepository.CreateOrder(order);
+            _gameStoreRepository.Save();
+            for (int i = 0; i < order.Products.Count; i++)
+            {
+                _gameStoreRepository.CreateOrderLine(order.Products[i].Id, order.ProductQuantities[i]);
+                _gameStoreRepository.Save();
+            }
+            
+        }
     }
 }

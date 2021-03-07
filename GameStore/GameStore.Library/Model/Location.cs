@@ -12,7 +12,7 @@ namespace GameStore.Library.Model
         public string City { get; set; }
         public string State { get; set; }
         public List<Product> Products { get; set; }
-        public List<int> ProductQuanties { get; set; }
+        public List<int> ProductQuantities { get; set; }
         public Dictionary<Product, int> Inventory { get; set; } = new();
 
 
@@ -27,7 +27,7 @@ namespace GameStore.Library.Model
         {
             for (int i = 0; i < Products.Count; i++)
             {
-                Inventory.Add(Products[i], ProductQuanties[i]);
+                Inventory.Add(Products[i], ProductQuantities[i]);
             }
         }
 

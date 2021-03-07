@@ -3,7 +3,7 @@
 const search = document.getElementById('search-button');
 const create = document.getElementById('create-button');
 const searchCustomerSection = document.getElementById('search-customer');
-const searchCustomerForm = document.getElementById('search-customer-form');
+const customerForm = document.getElementById('search-customer-form');
 const custTable = document.getElementById('customer-table');
 const searchResult = document.getElementById('search-result');
 const newCust = document.getElementById('new-customer');
@@ -25,7 +25,7 @@ create.onclick = function () {
 }
 
 
-searchCustomerForm.addEventListener('submit', event => {
+customerForm.addEventListener('submit', event => {
     event.preventDefault();
 
     // need to figure out how to reset the table
@@ -33,8 +33,8 @@ searchCustomerForm.addEventListener('submit', event => {
     //    searchResult.removeChild(searchResult.firstChild);
     //}
 
-    let firstname = searchCustomerForm.elements['fname'].value;
-    let lastname = searchCustomerForm.elements['lname'].value;
+    let firstname = customerForm.elements['fname'].value;
+    let lastname = customerForm.elements['lname'].value;
     let fullName = firstname + ' ' + lastname;
 
     let counter = 1;
@@ -66,12 +66,8 @@ searchCustomerForm.addEventListener('submit', event => {
     custTable.hidden = false;
 });
 
-console.log('before create customer');
-
 newCustomerForm.addEventListener('submit', event => {
     event.preventDefault();
-
-    console.log('in create customer');
 
     let _firstName = newCustomerForm.elements['firstname'].value;
     let _lastName = newCustomerForm.elements['lastname'].value;

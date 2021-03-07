@@ -52,7 +52,7 @@ namespace GameStore.DataAccess.Repositories
                     Name = p.Name,
                     Price = p.Price
                 }).ToList(),
-                ProductQuanties = ln.LocationInventories.Select(lni => lni.Quantity).ToList()
+                ProductQuantities = ln.LocationInventories.Select(lni => lni.Quantity).ToList()
             });
         }
 

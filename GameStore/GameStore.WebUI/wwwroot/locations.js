@@ -1,15 +1,15 @@
 ﻿'use strict';
 
 const locationTable = document.getElementById('location-table');
+const locationRows = document.getElementById('location-rows');
 
 let counter = 1;
 getAllLocations()
     .then(list => {
         for (const slocation of list) {
             //# | Location ID | Location City | Location State |
-            const row = locationTable.insertRow();
-            row.innerHTML = `<td>${counter}</td>
-                             <td>${slocation.id}</td>
+            const row = locationRows.insertRow();
+            row.innerHTML = `<td>${slocation.id}</td>
                              <td>${slocation.city}</td>
                              <td>${slocation.state}</td>`;
             row.addEventListener('click', () => {

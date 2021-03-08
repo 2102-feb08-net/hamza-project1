@@ -6,24 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Menu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="main.html">Main Menu</a></li>
-                <li><a href="customer.html">Customer</a></li>
-                <li><a href="locations.html">Store locations</a></li>
-                <li><a href="placeorder.html">Place orders</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="main.html">GameStore</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="main.html">Main Menu</a>
+                    <a class="nav-item nav-link" href="customer.html">Customer</a>
+                    <a class="nav-item nav-link" href="locations.html">Store locations</a>
+                    <a class="nav-item nav-link" href="placeorder.html">Place orders</a>
+                </div>
+            </div>
         </nav>
     </header>
 
     <main>
-        <p>
-            this is the main menu
-        </p>
+        <div class="container">
+            <h2 style="text-align: center; padding-top: 50px">
+                Welcome to GameStore!
+            </h2>
+        </div>
+
     </main>
 </body>
 

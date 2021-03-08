@@ -3,139 +3,119 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Place order</title>
-    <style>
-        /* The Modal (background) */
-        .product-modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            padding-top: 100px; /* Location of the box */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-
-        /* Modal Content */
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        /* The Close Button */
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    <title>Order History</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="main.html">Main Menu</a></li>
-                <li><a href="customer.html">Customer</a></li>
-                <li><a href="locations.html">Store locations</a></li>
-                <li><a href="placeorder.html">Place orders</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="main.html">GameStore</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="main.html">Main Menu</a>
+                    <a class="nav-item nav-link" href="customer.html">Customer</a>
+                    <a class="nav-item nav-link" href="locations.html">Store locations</a>
+                    <a class="nav-item nav-link" href="placeorder.html">Place orders</a>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
+    <div class="container">
+        <main>
 
-        <section id="customer-order" hidden>
-
-            <h3>This is the order history of customer: <span id="customer-name"></span></h3>
-
-            <section id="customer-order-history">
-                <h4>Click on an order to see what products were bought</h4>
-                <table id="customer-order-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">Location ID</th>
-                            <!--<th scope="col">Location Name</th>-->
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Time Placed</th>
-                        </tr>
-                    </thead>
-                    <tbody id="customer-order-result">
-                    </tbody>
-                </table>
+            <section id="customer-order" hidden>
+                <br>
+                <h3>This is the order history of customer: <span id="customer-name"></span></h3>
+                <br>
+                <section id="customer-order-history">
+                    <h4>Click on an order to see what products were bought</h4>
+                    <table id="customer-order-table" class="table table-hover">
+                        <caption>Click an order to see products bought</caption>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Location ID</th>
+                                <!--<th scope="col">Location Name</th>-->
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Time Placed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-order-result" class="table-rows">
+                        </tbody>
+                    </table>
+                </section>
             </section>
 
-        </section>
-
-        <section id="location-order" hidden>
-
-            <h3>This is the order history of location at: <span id="location-name"></span></h3>
-
-            <section id="location-order-history">
-                <h4>Click on an order to see what products were bought</h4>
-                <table id="location-order-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">Customer ID</th>
-                            <!--<th scope="col">Customer Name</th>-->
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Time Placed</th>
-                        </tr>
-                    </thead>
-                    <tbody id="location-order-result">
-                    </tbody>
-                </table>
+            <section id="location-order" hidden>
+                <br>
+                <h3>This is the order history of location at: <span id="location-name"></span></h3>
+                <br>
+                <section id="location-order-history">
+                    <table id="location-order-table" class="table table-hover">
+                        <caption>Click an order to see products bought</caption>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Customer ID</th>
+                                <!--<th scope="col">Customer Name</th>-->
+                                <th scope="col">Total Price</th>
+                                <th scope="col">Time Placed</th>
+                            </tr>
+                        </thead>
+                        <tbody id="location-order-result" class="table-rows">
+                        </tbody>
+                    </table>
+                </section>
             </section>
-
-        </section>
-
-        <div id="modal" class="product-modal">
-
             
-            <div id="modalcontent" class="modal-content">
-                <span class="close">&times;</span>
-                <table id="product-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Product ID</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody id="product-result">
-                    </tbody>
-                </table>
+            <!-- template copied from getbootstrap.com -->
+            <div id="product-modal" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Products bought</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table id="product-table" class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Product ID</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="product-result">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-        </div>
+            <div id="no-result" hidden><h4>No order history found for: <span id="cust-name"></span></h4></div>
+        </main>
+    </div>
 
-        <div id="no-result" hidden><h4>No order history found for: <span id="cust-name"></span></h4></div>
-
-    </main>
 
     <script src="main.js"></script>
     <script src="order.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -28,21 +28,17 @@ create.onclick = function () {
 customerForm.addEventListener('submit', event => {
     event.preventDefault();
 
-    // need to figure out how to reset the table
-    //while (searchResult.firstChild) {
-    //    searchResult.removeChild(searchResult.firstChild);
-    //}
-
     let firstname = customerForm.elements['fname'].value;
     let lastname = customerForm.elements['lname'].value;
     let fullName = firstname + ' ' + lastname;
 
+    searchResult.innerHTML = '';
     let counter = 1;
     searchCustomer(fullName)
         .then(list => {
             for (const customer of list) {
                 //username | first | last | city | state
-                const row = custTable.insertRow();
+                const row = searchResult.insertRow();
                 row.innerHTML = `<td>${counter}</td>
                                  <td>${customer.userName}</td>
                                  <td>${customer.firstName}</td>
@@ -85,7 +81,7 @@ newCustomerForm.addEventListener('submit', event => {
 
     createNewCustomer(customer)
         .then(() => {
-            successMessage.textContent = 'Message sent successfully';
+            successMessage.textContent = 'Customer Created!';
             successMessage.hidden = false;
         })
         .catch(error => {

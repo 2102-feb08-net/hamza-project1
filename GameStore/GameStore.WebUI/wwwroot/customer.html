@@ -4,86 +4,91 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="main.html">Main Menu</a></li>
-                <li><a href="customer.html">Customer</a></li>
-                <li><a href="locations.html">Store locations</a></li>
-                <li><a href="placeorder.html">Place orders</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="main.html">GameStore</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="main.html">Main Menu</a>
+                    <a class="nav-item nav-link active" href="customer.html">Customer</a>
+                    <a class="nav-item nav-link" href="locations.html">Store locations</a>
+                    <a class="nav-item nav-link" href="placeorder.html">Place orders</a>
+                </div>
+            </div>
         </nav>
     </header>
+    <br>
 
-    <main>
+    <div class="container">
+        <main>
 
-        <h3>What would you like to do?</h3>
-
-        <label>
-            Search Customer
-            <input type="button" id="search-button" value="Search">
-        </label>
-        <label>
-            Create a new customer
-            <input type="button" id="create-button" value="Create new">
-        </label>
-
-
-        <section id="search-customer" hidden>
-
-            <h4>Search customer with first and last name:</h4>
-            <form id="search-customer-form">
-                <label for="fname">First name:</label><br>
-                <input type="text" id="fname" name="fname" required><br>
-                <label for="lname">Last name:</label><br>
-                <input type="text" id="lname" name="lname" required><br><br>
-                <input type="submit" value="Search">
-            </form>
+            <h3>What would you like to do?</h3>
+            <br>
+            <label>
+                Search Customer
+                <input type="button" id="search-button" value="Search" style="margin-right: 20px">
+            </label>
+            <label>
+                Create a new customer
+                <input type="button" id="create-button" value="Create new">
+            </label>
             <br>
 
-            <table id="customer-table" hidden>
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">User Name</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">City</th>
-                        <th scope="col">State</th>
-                    </tr>
-                </thead>
-                <tbody id="search-result">
-                </tbody>
-            </table>
-        </section>
+            <section id="search-customer" hidden>
+                <h4>Search customer with first and last name:</h4>
+                <form id="search-customer-form">
+                    <label for="fname">First name:</label><br>
+                    <input type="text" id="fname" name="fname" required><br>
+                    <label for="lname">Last name:</label><br>
+                    <input type="text" id="lname" name="lname" required><br><br>
+                    <input type="submit" value="Search">
+                </form>
+                <br>
 
+                <table id="customer-table" class="table table-hover" hidden>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">City</th>
+                            <th scope="col">State</th>
+                        </tr>
+                    </thead>
+                    <tbody id="search-result" class="table-rows">
+                    </tbody>
+                </table>
+            </section>
 
-        <section id="new-customer" hidden>
-            <h4>Enter Customer's information:</h4>
-            <form id="new-customer-form">
-                <label for="firstname">First name:</label><br>
-                <input type="text" id="firstname" name="firstname" required><br>
-                <label for="lastname">Last name:</label><br>
-                <input type="text" id="lastname" name="lastname" required><br>
-                <label for="username">User name:</label><br>
-                <input type="text" id="username" name="username" required><br>
-                <label for="city">City:</label><br>
-                <input type="text" id="city" name="city" required><br>
-                <label for="state">State:</label><br>
-                <input type="text" id="state" name="state" required><br><br>
-                <input type="submit" value="Create">
-            </form>
-        </section>
-        
-        <br>
+            <section id="new-customer" hidden>
+                <h4>Enter Customer's information:</h4>
+                <form id="new-customer-form">
+                    <label for="firstname">First name:</label><br>
+                    <input type="text" id="firstname" name="firstname" required><br>
+                    <label for="lastname">Last name:</label><br>
+                    <input type="text" id="lastname" name="lastname" required><br>
+                    <label for="username">User name:</label><br>
+                    <input type="text" id="username" name="username" required><br>
+                    <label for="city">City:</label><br>
+                    <input type="text" id="city" name="city" required><br>
+                    <label for="state">State:</label><br>
+                    <input type="text" id="state" name="state" required><br><br>
+                    <input type="submit" value="Create">
+                </form>
+            </section>
 
-        <div id="success-message"></div>
-        <div id="error-message"></div>
+            <br>
 
-    </main>
+            <div id="success-message"></div>
+            <div id="error-message"></div>
+        </main>
+    </div>
 
     <script src="main.js"></script>
     <script src="searchcustomer.js"></script>

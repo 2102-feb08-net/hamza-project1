@@ -1,0 +1,10 @@
+﻿.table-rows {
+    cursor: pointer;
+}
+
+.table-contents {
+    border: solid 3px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

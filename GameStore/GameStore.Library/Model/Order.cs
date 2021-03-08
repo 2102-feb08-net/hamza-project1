@@ -19,11 +19,6 @@ namespace GameStore.Library.Model
         public Dictionary<Product, int> ShoppingCart { get; set; } = new();
 
 
-        //public Order(Customer customer, Location location)
-        //{
-        //    Customer = customer;
-        //    Location = location;
-        //}
 
         public void BuildShoppingCart()
         {
@@ -31,14 +26,6 @@ namespace GameStore.Library.Model
             {
                 ShoppingCart.Add(Products[i], ProductQuantities[i]);
             }
-        }
-
-        public void PlaceOrder()
-        {
-
-
-            //at the end set the datetime to now
-            //TimePlaced = new DateTime(DateTime.Now);
         }
 
 
@@ -55,6 +42,20 @@ namespace GameStore.Library.Model
             else
             {
                 ShoppingCart.Add(product, quantity);
+            }
+        }
+
+        /// <summary>
+        /// Checks if quantity is between 1-3. If it is not, throws an ArgumentException.
+        /// </summary>
+        public void CheckQuantity()
+        {
+            foreach(var quantity in ProductQuantities)
+            {
+                if(quantity > 3 || quantity < 1)
+                {
+                    throw new ArgumentException("Quantity on orders must be between 1-3");
+                }
             }
         }
     }

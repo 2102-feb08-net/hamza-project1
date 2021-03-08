@@ -3,6 +3,7 @@
 const pickCustomer = document.getElementById('pick-customer');
 const customerForm = document.getElementById('customer-form');
 const customerTable = document.getElementById('customer-table');
+const noResults = document.getElementById('no-results');
 const pickLocation = document.getElementById('pick-location');
 const locationTable = document.getElementById('location-table');
 const orderFor = document.getElementById('order-for');
@@ -36,34 +37,39 @@ customerForm.addEventListener('submit', event => {
     let fullName = firstname + ' ' + lastname;
     const customerResult = document.getElementById('customer-result');
 
+    customerResult.innerHTML = '';
     let counter = 1;
     searchCustomer(fullName)
         .then(list => {
-            for (const customer of list) {
-                //username | first | last | city | state
-                const row = customerResult.insertRow();
-                row.innerHTML = `<td>${counter}</td>
+            if (list.length === 0) {
+                customerTable.hidden = true;
+                noResults.hidden = false;
+            } else {
+                for (const customer of list) {
+                    //username | first | last | city | state
+                    const row = customerResult.insertRow();
+                    row.innerHTML = `<td>${counter}</td>
                                  <td>${customer.userName}</td>
                                  <td>${customer.firstName}</td>
                                  <td>${customer.lastName}</td>
                                  <td>${customer.city}</td>
                                  <td>${customer.state}</td>`;
-                row.addEventListener('click', () => {
-                    _customerId = customer.id;
-                    _customerName = fullName;
-                    customerNameSpan.innerHTML = _customerName;
-                    pickCustomer.hidden = true;
-                    listLocations();
-                });
-                counter++;
+                    row.addEventListener('click', () => {
+                        _customerId = customer.id;
+                        _customerName = fullName;
+                        customerNameSpan.innerHTML = _customerName;
+                        pickCustomer.hidden = true;
+                        listLocations();
+                    });
+                    counter++;
+                    noResults.hidden = true;
+                    customerTable.hidden = false;
+                }
             }
         })
         .catch(error => {
             alert(error.toString());
         });
-
-
-    customerTable.hidden = false;
 });
 
 function listLocations() {

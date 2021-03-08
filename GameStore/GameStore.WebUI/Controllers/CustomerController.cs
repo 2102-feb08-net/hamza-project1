@@ -57,6 +57,7 @@ namespace GameStore.WebUI.Controllers
         [HttpPost("api/place-order")]
         public void PlaceOrder(Order order)
         {
+            order.CheckQuantity();
             _gameStoreRepository.CreateOrder(order);
             _gameStoreRepository.Save();
             for (int i = 0; i < order.Products.Count; i++)

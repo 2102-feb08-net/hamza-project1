@@ -6,6 +6,7 @@ const searchCustomerSection = document.getElementById('search-customer');
 const customerForm = document.getElementById('search-customer-form');
 const custTable = document.getElementById('customer-table');
 const searchResult = document.getElementById('search-result');
+const noResults = document.getElementById('no-results');
 const newCust = document.getElementById('new-customer');
 const newCustomerForm = document.getElementById('new-customer-form');
 const errorMessage = document.getElementById('error-message');
@@ -15,12 +16,14 @@ search.onclick = function () {
     newCust.hidden = true;
     successMessage.hidden = true;
     errorMessage.hidden = true;
+    noResults.hidden = true;
     searchCustomerSection.hidden = false;
 }
 
 create.onclick = function () {
     searchCustomerSection.hidden = true;
     custTable.hidden = true;
+    noResults.hidden = false;
     newCust.hidden = false;
 }
 
@@ -36,30 +39,34 @@ customerForm.addEventListener('submit', event => {
     let counter = 1;
     searchCustomer(fullName)
         .then(list => {
-            for (const customer of list) {
-                //username | first | last | city | state
-                const row = searchResult.insertRow();
-                row.innerHTML = `<td>${counter}</td>
+            if (list.length === 0) {
+                custTable.hidden = true;
+                noResults.hidden = false;
+            } else {
+                for (const customer of list) {
+                    //username | first | last | city | state
+                    const row = searchResult.insertRow();
+                    row.innerHTML = `<td>${counter}</td>
                                  <td>${customer.userName}</td>
                                  <td>${customer.firstName}</td>
                                  <td>${customer.lastName}</td>
                                  <td>${customer.city}</td>
                                  <td>${customer.state}</td>`;
-                row.addEventListener('click', () => {
-                    sessionStorage.removeItem('locationId');
-                    sessionStorage.setItem('customerId', customer.id);
-                    sessionStorage.setItem('customerName', fullName);
-                    location = 'order.html';
-                });
-                counter++;
+                    row.addEventListener('click', () => {
+                        sessionStorage.removeItem('locationId');
+                        sessionStorage.setItem('customerId', customer.id);
+                        sessionStorage.setItem('customerName', fullName);
+                        location = 'order.html';
+                    });
+                    counter++;
+                }
+                noResults.hidden = true;
+                custTable.hidden = false;
             }
         })
         .catch(error => {
             alert(error.toString());
         });
-
-
-    custTable.hidden = false;
 });
 
 newCustomerForm.addEventListener('submit', event => {

@@ -6,20 +6,54 @@ using System.Threading.Tasks;
 
 namespace GameStore.Library.Model
 {
+    /// <summary>
+    /// Represents an order made by a customer.
+    /// </summary>
     public class Order
     {
+        /// <summary>
+        /// The order's Id.
+        /// </summary>
         public int Id { get; set; }
+
+        /// <summary>
+        /// The Id of the customer that made the order.
+        /// </summary>
         public int CustomerId { get; set; }
+
+        /// <summary>
+        /// The Id of the location the order is being placed at.
+        /// </summary>
         public int LocationId { get; set; }
+
+        /// <summary>
+        /// The time that the order was placed.
+        /// </summary>
         public DateTime TimePlaced { get; set; }
+
+        /// <summary>
+        /// Total price of all the products in the order.
+        /// </summary>
         public double TotalPrice { get; set; }
+
+        /// <summary>
+        /// All the products bought by the customer in the order.
+        /// </summary>
         public List<Product> Products { get; set; }
+
+        /// <summary>
+        /// The quantities of all the products bought by the customer in the order.
+        /// </summary>
         public List<int> ProductQuantities { get; set; }
 
+        /// <summary>
+        /// The products and quantities in a dictionary format.
+        /// </summary>
         public Dictionary<Product, int> ShoppingCart { get; set; } = new();
 
-
-
+        /// <summary>
+        /// Builds the shopping cart from the products and quantities properties.
+        /// </summary>
         public void BuildShoppingCart()
         {
             for (int i = 0; i < Products.Count; i++)
@@ -27,7 +61,6 @@ namespace GameStore.Library.Model
                 ShoppingCart.Add(Products[i], ProductQuantities[i]);
             }
         }
-
 
         /// <summary>
         /// Adds the product and quantity to the shopping cart.

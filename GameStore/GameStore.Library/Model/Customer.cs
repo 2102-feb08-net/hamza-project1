@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.Library.Model
 {
+    /// <summary>
+    /// Represents a customer of the store.
+    /// </summary>
     public class Customer
     {
         public int Id { get; set; }
@@ -16,6 +19,10 @@ namespace GameStore.Library.Model
         private string _city;
         private string _state;
 
+        /// <summary>
+        /// The first name of the customer.
+        /// Throws an ArgumentException if the characters aren't english letters and between 2-20 characters.
+        /// </summary>
         public string FirstName
         {
             get => _firstName;
@@ -35,6 +42,11 @@ namespace GameStore.Library.Model
                 }
             }
         }
+
+        /// <summary>
+        /// The last name of the customer.
+        /// Throws an ArgumentException if the characters aren't english letters and between 2-20 characters.
+        /// </summary>
         public string LastName
         {
             get => _lastName;
@@ -55,6 +67,10 @@ namespace GameStore.Library.Model
             }
         }
 
+        /// <summary>
+        /// The user name of the customer.
+        /// Throws an ArgumentException if the characters aren't english letters or digits and between 5-15 characters.
+        /// </summary>
         public string UserName
         {
             get => _userName;
@@ -75,6 +91,10 @@ namespace GameStore.Library.Model
             }
         }
 
+        /// <summary>
+        /// The city where the customer is from.
+        /// Throws an ArgumentException if the characters aren't english letters and between 2-20 characters.
+        /// </summary>
         public string City
         {
             get => _city;
@@ -97,6 +117,10 @@ namespace GameStore.Library.Model
             }
         }
 
+        /// <summary>
+        /// The state where the customer is from.
+        /// Throws an ArgumentException if the characters aren't english letters and between 2-20 characters.
+        /// </summary>
         public string State
         {
             get => _state;
@@ -119,6 +143,9 @@ namespace GameStore.Library.Model
             }
         }
 
+        /// <summary>
+        /// The full name of the customer.
+        /// </summary>
         public string GetFullName() => FirstName + " " + LastName;
     }
 }

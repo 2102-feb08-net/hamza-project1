@@ -160,22 +160,28 @@ namespace GameStore.DataAccess.Repositories
             _dbContext.Add(newOrderLine);
         }
 
-        //public IEnumerable<Library.Model.Order> GetLastOrder()
+        //public void UpdateLocationInventory()
         //{
-        //    IQueryable<Entities.Customer> customers = _dbContext.Customers
-        //        .Select(c => c)
-        //        .Where(c => (c.FirstName + " " + c.LastName) == name)
-        //        .AsNoTracking();
+        //    var lastOrder = _dbContext.Orders
+        //        .OrderByDescending(o => o.Id)
+        //        .FirstOrDefault();
 
-        //    return customers.Select(cs => new Library.Model.Customer
+        //    var orderLines = _dbContext.OrderLines
+        //        .Select(orl => orl)
+        //        .Where(orl => orl.OrderId == lastOrder.Id);
+
+        //    var productsList = orderLines.Select(orl => orl.ProductId).ToList();
+
+        //    foreach (var quantity in orderLines.Select(orl => orl.Quantity))
         //    {
-        //        Id = cs.Id,
-        //        FirstName = cs.FirstName,
-        //        LastName = cs.LastName,
-        //        UserName = cs.UserName,
-        //        City = cs.City,
-        //        State = cs.State
-        //    });
+        //        var inventory = _dbContext.Orders
+        //            .Select(o => o)
+        //            .Where(o => o.Id == lastOrder.Id)
+        //            .Select(o => o.Location)
+        //            .Where(l => l.Id == lastOrder.LocationId)
+        //            .Select(l => l.LocationInventories)
+        //            .Where(li => li.Contains())
+        //    }
         //}
 
         /// <summary>

@@ -28,6 +28,7 @@ let _locationName = '';
 let _products = [];
 let _quantities = [];
 let _totalPrice = 0;
+let _slocation = null;
 
 customerForm.addEventListener('submit', event => {
     event.preventDefault();
@@ -89,8 +90,9 @@ function listLocations() {
                     _locationId = slocation.id;
                     _locationName = slocation.city + ', ' + slocation.state;
                     locationNameSpan.innerHTML = _locationName;
+                    _slocation = slocation;
                     pickLocation.hidden = true;
-                    listInventory(slocation);
+                    listInventory(_slocation);
                 });
                 counter++;
             }
@@ -107,6 +109,7 @@ function listInventory(slocation) {
 
     const inventoryResult = document.getElementById('inventory-result');
 
+    inventoryResult.innerHTML = '';
     let counter = 1;
     let products = slocation.products;
     let quantities = slocation.productQuantities;
@@ -123,7 +126,6 @@ function listInventory(slocation) {
         counter++;
     }
     locationInventory.hidden = false;
-    totalPrice.innerHTML = '0';
     shoppingCart.hidden = false;
 }
 
@@ -137,9 +139,14 @@ function askQuantity(product) {
             alert('Enter a number');
         } else if (amount < 1 || amount > 3) {
             alert('Quantity must be between 1-3')
+        } else if (amount > _slocation.productQuantities[_slocation.products.indexOf(product)]) {
+            alert('Quantity can not be higher than what the store has in stock');
         } else {
             _products.push(product);
             _quantities.push(amount);
+            let update = _slocation.products.indexOf(product);
+            _slocation.productQuantities[update] -= amount;
+            listInventory(_slocation);
 
             $('#product-quantity-modal').modal('hide');
             displayShoppingCart();

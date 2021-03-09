@@ -188,14 +188,21 @@ submitOrder.onclick = function () {
         .then(() => {
             successMessage.textContent = 'Order placed successfully';
             successMessage.hidden = false;
+            errorMessage.hidden = true;
         })
         .catch(error => {
             errorMessage.textContent = error.toString();
             errorMessage.hidden = false;
+            successMessage.hidden = true;
         });
 }
 
 discardCart.onclick = function () {
+    for (let i = 0; i < _products.length; i++) {
+        let update = _slocation.products.indexOf(_products[i]);
+        _slocation.productQuantities[update] += _quantities[i];
+        listInventory(_slocation);
+    }
     _products = [];
     _quantities = [];
     displayShoppingCart();

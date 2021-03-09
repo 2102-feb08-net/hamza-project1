@@ -65,7 +65,7 @@ function placeOrder(customer) {
         body: JSON.stringify(customer)
     }).then(response => {
         if (!response.ok) {
-            throw new Error(`Could not place order. Network response was not ok (${response.status})`);
+            throw new Error(`Could not place order.`);
         }
     });
 }

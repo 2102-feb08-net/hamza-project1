@@ -36,12 +36,12 @@ Start the app:
 In the url, append `main.html` to go to the main menu.  
 
 It should look like this:  
-![Main Menu](./images/p1-main-menu.png)
+![Main Menu](./images/p1-main-menu.PNG)
 
 ## Usage
 
 Use the navbar to navigate to different pages and follow the instructions on the page to do your task.  
-![Navbar](./images/p1-navbar.png)
+![Navbar](./images/p1-navbar.PNG)
 
 ## License
 
